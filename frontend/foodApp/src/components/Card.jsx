@@ -23,7 +23,7 @@ function Card(props) {
     const [added , setAdded] = useState(false);
     const [showMessage , setShowMessage] = useState(false);
 
-    const removeQuant = () => {
+    const removeQuant = async() => {
         if(!token){
             alert("User is not logged in ");
         }
@@ -33,7 +33,7 @@ function Card(props) {
             }
             else{
                 setQuantity(0);
-                removeCart(foodItem);
+                await removeCart(foodItem);
             }
         }
     }
@@ -47,7 +47,7 @@ function Card(props) {
         }
     }
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = async(item) => {
         if(quantity === 0){
             setShowMessage("First add quantity on '+' icon");
             setTimeout(() => {
@@ -55,7 +55,7 @@ function Card(props) {
             }, 3000);
             return;
         }
-        addToCart(item);
+        await addToCart(item);
         setShowMessage("item added to the cart");
         setAdded(true);
         setTimeout(() => {
