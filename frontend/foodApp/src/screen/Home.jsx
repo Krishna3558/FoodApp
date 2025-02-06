@@ -13,7 +13,7 @@ function Home() {
   const [item , setItem] = useState(null);
   const [active , setActive] = useState(false);
   const [search , setSearch] = useState('');
-  const url = 'http://localhost:3000';
+  const url = 'https://foodapp-omih.onrender.com';
   useEffect(() => {
     const fetchData = async() => {
       try{
