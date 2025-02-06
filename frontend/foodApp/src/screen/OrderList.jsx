@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 function OrderList() {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    const url = "http://localhost:3000";
+    const url = "https://foodapp-omih.onrender.com";
     const [orderList , setOrderList] = useState([]);
     const [expand , setExpand] = useState(null);
     const [foodData , setFoodData] = useState({});
