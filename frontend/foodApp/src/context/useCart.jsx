@@ -6,7 +6,7 @@ export const CartProvider = ({children}) => {
     const [cart , setCart] = useState([]);
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    const url = 'http://localhost:3000';
+    const url = 'https://foodapp-omih.onrender.com';
 
     useEffect(() => {
         const fetchCart = async () => {
