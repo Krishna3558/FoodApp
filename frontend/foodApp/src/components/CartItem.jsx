@@ -3,7 +3,7 @@ import { FaTrash , FaMinus , FaPlus } from 'react-icons/fa';
 import { useCart } from '../context/useCart';
 
 function CartItem({itemId , price , choice , quant}) {
-    const url = "http://localhost:3000";
+    const url = "https://foodapp-omih.onrender.com";
     const {removeCart , addToCart , fetchFoodData} = useCart();
     const [foodData , setFoodData] = useState({});
     useEffect(() => {
