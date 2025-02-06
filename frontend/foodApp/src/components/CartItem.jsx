@@ -30,7 +30,7 @@ function CartItem({itemId , price , choice , quant}) {
                 <button 
                     className="bg-gray-200 p-2 rounded-md hover:bg-gray-300 disabled:opacity-50"
                     disabled = {quant <= 1}
-                    onClick={() => addToCart({foodItem: itemId , quantity: quant - 1 , price: price , userChoice: choice})}
+                    onClick={async() => await addToCart({foodItem: itemId , quantity: quant - 1 , price: price , userChoice: choice})}
                 >
                     <FaMinus size={12} />
                 </button>
@@ -39,14 +39,14 @@ function CartItem({itemId , price , choice , quant}) {
 
                 <button 
                     className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
-                    onClick={() => addToCart({foodItem: itemId , quantity: quant + 1 , price: price , userChoice: choice})}
+                    onClick={async() => await addToCart({foodItem: itemId , quantity: quant + 1 , price: price , userChoice: choice})}
                 >
                     <FaPlus size={12} />
                 </button>
             </div>
         <button 
                 className="ml-4 text-red-500 hover:text-red-700"
-                onClick={() => removeCart(itemId)}
+                onClick={async() => await removeCart(itemId)}
             >
                 <FaTrash size={18} />
         </button>
