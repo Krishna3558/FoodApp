@@ -14,7 +14,7 @@ function Card(props) {
 
     const [msg , setMsg] = useState('');
     const token = localStorage.getItem('token');
-    const url = 'http://localhost:3000';
+    const url = 'https://foodapp-omih.onrender.com';
 
     const {addToCart , cart , removeCart} = useCart();
     const items = cart.find(item => item.foodItem === foodItem);
