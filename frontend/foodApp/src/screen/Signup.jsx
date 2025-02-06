@@ -11,7 +11,7 @@ function Signup() {
     const [message , setMessage] = useState('');
     const [loading , setLoading] = useState(false);
     const [error , setError] = useState({});
-    const url = "http://localhost:3000";
+    const url = "https://foodapp-omih.onrender.com";
 
     const navigate = useNavigate();
 
