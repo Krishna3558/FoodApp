@@ -8,7 +8,7 @@ function Login() {
     const [loading , setLoading] = useState(false);
     const [error , setError] = useState({});
     const navigate = useNavigate();
-    const url = "http://localhost:3000";
+    const url = "https://foodapp-omih.onrender.com";
 
     const validateForm = () => {
         let newError = {};
