@@ -83,62 +83,65 @@ function Home() {
 
   return (
     <div>
-        <Navbar/>
-        <div className=' flex justify-center mt-6 px-4 '>
-          <div className=' w-full md:w-[650px] lg:w-[810px]'>
-            <div>
-              <div className=' flex justify-between items-center pb-5'>
-              <h1 className=' text-lg md:text-xl lg:text-2xl font-semibold md:font-bold lg:font-extrabold'>What's on your mind?</h1>
-              <div className=' flex gap-2 max-md:hidden'>
-                <button onClick={scrollLeft} className={` bg-gray-300 rounded-full px-2 py-2 flex justify-center items-center hover:bg-gray-400 `}>
-                  <FaChevronLeft size={20} />
-                </button>
-                <button onClick={scrollRight} className={` bg-gray-300 rounded-full px-2 py-2 flex justify-center items-center hover:bg-gray-400 `}>
-                  <FaChevronRight size={20} />
-                </button>
-              </div>
-              </div>
-              <div ref={catRefrence} className=' flex gap-5 max-md:flex-wrap max-md:justify-center md:overflow-x-scroll md:scroll-smooth md:whitespace-nowrap' style={{scrollBehavior: "smooth" , scrollbarWidth: "none"}}>
-                  {
-                    foodCat.map((items) => (
-                      <div>
-                      <button onClick={() => handleOptions(items.category)} className= {`bg-cover h-16 w-16 md:h-36 md:w-36 rounded-full ${item === items.category ? 'border-4 border-orange-300' : ''}`}  style={{backgroundImage: `url(${items.img})`}}>
-                        
+      <Navbar />
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <h1 className="text-2xl font-bold text-orange-500">Loading...</h1>
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center h-screen">
+          <h1 className="text-2xl font-bold text-red-500">{error}</h1>
+        </div>
+      ) : (
+        <>
+          <div className='flex justify-center mt-6 px-4'>
+            <div className='w-full md:w-[650px] lg:w-[810px]'>
+              <div>
+                <div className='flex justify-between items-center pb-5'>
+                  <h1 className='text-lg md:text-xl lg:text-2xl font-semibold md:font-bold lg:font-extrabold'>
+                    What's on your mind?
+                  </h1>
+                  <div className='flex gap-2 max-md:hidden'>
+                    <button onClick={scrollLeft} className="bg-gray-300 rounded-full px-2 py-2 flex justify-center items-center hover:bg-gray-400">
+                      <FaChevronLeft size={20} />
+                    </button>
+                    <button onClick={scrollRight} className="bg-gray-300 rounded-full px-2 py-2 flex justify-center items-center hover:bg-gray-400">
+                      <FaChevronRight size={20} />
+                    </button>
+                  </div>
+                </div>
+                <div ref={catRefrence} className='flex gap-5 max-md:flex-wrap max-md:justify-center md:overflow-x-scroll md:scroll-smooth md:whitespace-nowrap' style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}>
+                  {foodCat.map((items) => (
+                    <div key={items.category}>
+                      <button onClick={() => handleOptions(items.category)} className={`bg-cover h-16 w-16 md:h-36 md:w-36 rounded-full ${item === items.category ? 'border-4 border-orange-300' : ''}`} style={{ backgroundImage: `url(${items.img})` }}>
                       </button>
-                      <h1 className=' text-sm md:text-lg font-medium capitalize text-center'>
+                      <h1 className='text-sm md:text-lg font-medium capitalize text-center'>
                         {items.category}
                       </h1>
-                      </div>
-                    ))
-                  }
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex justify-center mt-6">
-        <div className="relative w-3/4">
-          <input
-            type="text"
-            placeholder="Search for food..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2 text-lg border-2 border-orange-400 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-          <FaSearch className="absolute right-4 top-3 text-orange-500" size={20} />
-        </div>
-      </div>
-        <ul className='my-6 flex flex-wrap gap-6 justify-center'>
-          {
-            filteredItem.map((item) => (
-              <Card details={item} />
-            ))
-          }
-        </ul>
-        <footer>
-          <Footer/>
-        </footer>
+          <div className="flex justify-center mt-6">
+            <div className="relative w-3/4">
+              <input type="text" placeholder="Search for food..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full px-4 py-2 text-lg border-2 border-orange-400 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" />
+              <FaSearch className="absolute right-4 top-3 text-orange-500" size={20} />
+            </div>
+          </div>
+          <ul className='my-6 flex flex-wrap gap-6 justify-center'>
+            {filteredItem.map((item) => (
+              <Card key={item._id} details={item} />
+            ))}
+          </ul>
+          <footer>
+            <Footer />
+          </footer>
+        </>
+      )}
     </div>
-  )
-}
+  );
+}  
 
 export default Home
